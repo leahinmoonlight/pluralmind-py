@@ -1,0 +1,74 @@
+[project]
+name = "pluralmind"
+version = "1.0.0b1"
+description = "Let folks know who's speaking. Pluralmind allows plural folks to share which of their members is sending a message on Twitch."
+readme = "README.md"
+license = "MIT"
+authors = [
+    { name = "leahinmoonlight" },
+]
+requires-python = ">=3.12"
+dependencies = []
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Communications :: Chat",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://pluralmind.chat/"
+Documentation = "https://docs.pluralmind.chat"
+Repository = "https://github.com/leahinmoonlight/pluralmind-py.git"
+Issues = "https://github.com/leahinmoonlight/pluralmind-py/issues"
+Changelog = "https://github.com/leahinmoonlight/pluralmind-py/releases"
+
+[build-system]
+requires = ["uv_build>=0.12.1,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.1",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+# https://docs.astral.sh/ruff/rules/
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-bugbear
+    "B",
+    # flake8-simplify
+    "SIM",
+    # flake8-type-checking
+    "TC",
+    # isort
+    "I",
+    # Warning
+    "W",
+]
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 80
+
+[tool.pytest]
+testpaths = [
+    "tests",
+]
