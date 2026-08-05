@@ -1,6 +1,6 @@
 [project]
 name = "pluralmind"
-version = "1.0.0b1"
+version = "2.0.0b1"
 description = "Let folks know who's speaking. Pluralmind allows plural folks to share which of their members is sending a message on Twitch."
 readme = "README.md"
 license = "MIT"
@@ -8,7 +8,9 @@ authors = [
     { name = "leahinmoonlight" },
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "httpx>=0.25.1",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -34,6 +36,8 @@ build-backend = "uv_build"
 [dependency-groups]
 dev = [
     "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+    "respx>=0.23.1",
     "ruff>=0.16.1",
 ]
 
@@ -43,32 +47,57 @@ line-length = 120
 
 [tool.ruff.format]
 quote-style = "single"
+preview = true
 
 [tool.ruff.lint]
 # https://docs.astral.sh/ruff/rules/
 select = [
+    # flake8-bugbear
+    "B",
+    # pydocstyle
+    "D",
     # pycodestyle
     "E",
     # Pyflakes
     "F",
-    # pyupgrade
-    "UP",
-    # flake8-bugbear
-    "B",
+    # flake8-logging-format
+    "G",
+    # isort
+    "I",
+    # flake8-logging
+    "LOG",
+    # Ruff-specific rules
+    "RUF",
     # flake8-simplify
     "SIM",
     # flake8-type-checking
     "TC",
-    # isort
-    "I",
+    # pyupgrade
+    "UP",
     # Warning
     "W",
+]
+ignore = [
+    # Ignore missing docstrings
+    "D1",
+    # prefer D211: No blank lines allowed before class docstring
+    "D203",
+    # Don't require summary line
+    "D205",
+    # prefer D213: Multi-line docstring summary should start at the second line
+    "D212",
+    # Don't require first line to end with a period / punctuation
+    "D400",
+    "D415",
+    # Don't require imperative mood
+    "D401",
 ]
 
 [tool.ruff.lint.pycodestyle]
 max-doc-length = 80
 
 [tool.pytest]
+asyncio_mode = "auto"
 testpaths = [
     "tests",
 ]
