@@ -1,0 +1,48 @@
+name: release
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: release-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/pluralmind
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
+
+      - name: Get the version from pyproject.toml and verify it matches our release
+        run: |
+          CODE_VERSION=$(uv version --short)
+          RELEASE_VERSION="${{ github.event.release.tag_name }}"
+          if [ "v$CODE_VERSION" != "$RELEASE_VERSION" ]; then
+            echo "::error::Release version $RELEASE_VERSION doesn't match pyproject.toml v$CODE_VERSION."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Run tests
+        run: uv run pytest
+
+      - name: Build library
+        run: uv build
+
+      - name: Publish to pypi
+        uses: pypa/gh-action-pypi-publish@release/v1
