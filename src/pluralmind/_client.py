@@ -54,7 +54,7 @@ class AsyncPluralmindClient:
         finally:
             self._pending_fetches.pop(id, None)
 
-    def load_system(self, id: TwitchId) -> asyncio.Task[System | None]:
+    def _load_system(self, id: TwitchId) -> asyncio.Task[System | None]:
         """
         Loads information about a system from the Pluralmind API.
         When called with an ID that is already being loaded, that initial
@@ -86,7 +86,7 @@ class AsyncPluralmindClient:
 
         # Load the system's info fresh
         try:
-            system = await self.load_system(id)
+            system = await self._load_system(id)
             self._system_cache[id] = CachedSystem(system=system, timestamp=time.time())
             return system
         except (httpx.HTTPError, ValueError):
