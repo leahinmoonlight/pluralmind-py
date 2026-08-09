@@ -1,6 +1,6 @@
 [project]
 name = "pluralmind"
-version = "2.0.0b1"
+version = "2.0.0"
 description = "Let folks know who's speaking. Pluralmind allows plural folks to share which of their members is sending a message on Twitch."
 readme = "README.md"
 license = "MIT"
