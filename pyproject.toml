@@ -86,8 +86,9 @@ ignore = [
     "D205",
     # prefer D213: Multi-line docstring summary should start at the second line
     "D212",
-    # Don't require first line to end with a period / punctuation
+    # Loosen first line of docstring rules
     "D400",
+    "D404",
     "D415",
     # Don't require imperative mood
     "D401",
