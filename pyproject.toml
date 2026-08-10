@@ -1,6 +1,6 @@
 [project]
 name = "pluralmind"
-version = "2.0.0"
+version = "2.0.1"
 description = "Let folks know who's speaking. Pluralmind allows plural folks to share which of their members is sending a message on Twitch."
 readme = "README.md"
 license = "MIT"
@@ -10,9 +10,10 @@ authors = [
 requires-python = ">=3.12"
 dependencies = [
     "httpx>=0.25.1",
+    "typing-extensions>=4.4.0",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.12",

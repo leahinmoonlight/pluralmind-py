@@ -2,8 +2,8 @@ from typing import cast
 
 from ._types import (
     DetectionResult,
+    Fragment,
     Member,
-    MessageFragment,
     ProxiedMessage,
     ProxyTypes,
     System,
@@ -11,9 +11,7 @@ from ._types import (
 from ._util import ConsumeFragmentsResult, consume_fragments_to_match_proxy
 
 
-def detect_proxy_in_message[Fragment: MessageFragment](
-    system: System, fragments: list[Fragment]
-) -> DetectionResult[Fragment] | None:
+def detect_proxy_in_message(system: System, fragments: list[Fragment]) -> DetectionResult[Fragment] | None:
     """
     Identifies if a configured proxy was used for this message.
     You generally shouldn't need to call this directly, and should use
@@ -45,9 +43,7 @@ def detect_proxy_in_message[Fragment: MessageFragment](
             }
 
 
-def get_proxied_message[Fragment: MessageFragment](
-    system: System | None, message: str | list[Fragment]
-) -> ProxiedMessage[Fragment] | None:
+def get_proxied_message(system: System | None, message: str | list[Fragment]) -> ProxiedMessage[Fragment] | None:
     """
     Checks if a proxy applies to this message, and if so, returns information
     about the member and their preferences. Also includes clean versions of the

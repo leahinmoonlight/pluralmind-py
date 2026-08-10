@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Final, Literal, NotRequired, TypedDict
+from typing import Final, Generic, Literal, NotRequired, TypedDict
+
+from typing_extensions import TypeVar
+
+Fragment = TypeVar('Fragment', bound='MessageFragment', default='MessageFragment')
 
 type TwitchId = str | int
 """
@@ -73,7 +77,7 @@ class Member(TypedDict):
     """
 
 
-class ProxiedMessage[Fragment: MessageFragment](TypedDict):
+class ProxiedMessage(TypedDict, Generic[Fragment]):
     member: Member
     """The member that was identified to be sending the message."""
 
@@ -225,7 +229,7 @@ class Proxy(TypedDict):
     """Where the proxy text should be detected in the message."""
 
 
-class DetectionResult[Fragment: MessageFragment](TypedDict):
+class DetectionResult(TypedDict, Generic[Fragment]):
     """
     A raw detection result. See `ProxiedMessage` for more information on these
     fields.
