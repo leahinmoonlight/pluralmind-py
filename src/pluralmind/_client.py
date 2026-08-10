@@ -2,7 +2,7 @@ import asyncio
 import logging
 import time
 from dataclasses import dataclass
-from typing import Self
+from typing import Any, Self
 
 import httpx
 
@@ -100,5 +100,5 @@ class AsyncPluralmindClient:
     async def __aenter__(self) -> Self:
         return self
 
-    async def __aexit__(self, *exc) -> None:
+    async def __aexit__(self, *exc: Any) -> None:
         await self.aclose()

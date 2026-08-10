@@ -29,6 +29,9 @@ jobs:
       - name: Verify formatting
         run: uv run ruff format --check .
 
+      - name: Check types
+        run: uv run pyright
+
       - name: Build library
         run: uv build
 

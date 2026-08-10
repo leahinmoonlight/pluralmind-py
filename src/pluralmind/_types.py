@@ -148,7 +148,8 @@ class FragmentTypes:
     attempt to detect and ignore leading mentions in text fragments.
     """
 
-    _KNOWN: Final = frozenset({TEXT, EMOTE, MENTION})
+
+KNOWN_FRAGMENT_TYPES = frozenset({FragmentTypes.TEXT, FragmentTypes.EMOTE, FragmentTypes.MENTION})
 
 
 type MessageFragmentType = Literal['text', 'emote', 'mention'] | str

@@ -35,11 +35,25 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "pyright==1.1.411",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
     "respx>=0.23.1",
     "ruff>=0.16.1",
 ]
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.12"
+typeCheckingMode = "strict"
+
+[[tool.pyright.executionEnvironments]]
+root = "tests"
+reportMissingParameterType = false
+reportUnknownParameterType = false
+reportUnknownMemberType = false
+reportUnknownArgumentType = false
+reportUnknownVariableType = false
 
 [tool.ruff]
 target-version = "py312"

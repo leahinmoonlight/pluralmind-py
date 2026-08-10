@@ -1,7 +1,7 @@
 import re
 from typing import Literal, TypedDict
 
-from ._types import FragmentTypes, Member, MessageFragment, Proxy
+from ._types import KNOWN_FRAGMENT_TYPES, FragmentTypes, Member, MessageFragment, Proxy
 
 # Match JavaScript's \S implementation for consistency
 non_whitespace_regex = re.compile(r'[^\s\ufeff]')
@@ -46,7 +46,7 @@ def consume_fragments_to_match_proxy[Fragment: MessageFragment](
     matched = False
     for idx, fragment in enumerate(fragments):
         # Bail out as soon as we hit a fragment type that we don't recognize
-        if fragment['type'] not in FragmentTypes._KNOWN:
+        if fragment['type'] not in KNOWN_FRAGMENT_TYPES:
             return
 
         # All known fragment types that we're working with are expected to have

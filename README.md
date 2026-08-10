@@ -6,7 +6,8 @@ This library is designed to make it fast and simple to add plurality support to 
 
 If you want to add Pluralmind to web-based projects such as chat widgets, check out our [JavaScript library](https://github.com/leahinmoonlight/pluralmind).
 
-[![pypi version](https://img.shields.io/pypi/v/pluralmind?color=ff69b4)](https://pypi.org/project/pluralmind/) [![license](https://img.shields.io/pypi/l/pluralmind?color=ff69b4)](./LICENSE)
+[![pypi version](https://img.shields.io/pypi/v/pluralmind?color=ff69b4)](https://pypi.org/project/pluralmind/) [![license](https://img.shields.io/pypi/l/pluralmind?color=ff69b4)](https://github.com/leahinmoonlight/pluralmind-py/blob/main/LICENSE)
+[![Pyright Strict](https://img.shields.io/badge/Pyright-Strict-ff69b4)](https://github.com/leahinmoonlight/pluralmind-py/blob/main/pyproject.toml)
 
 ## Guides and References
 
